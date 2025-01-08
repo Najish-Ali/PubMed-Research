@@ -88,44 +88,42 @@ Installation
 
     -   If Poetry is not installed, you can install it using the following command:
 
-        bash
-
-        Copy code
-
-        `curl -sSL https://install.python-poetry.org | python3 -`
-
+    ```
+    
+      curl -sSL https://install.python-poetry.org | python3 -
+      
+    ```
     -   Alternatively, follow the installation instructions for your operating system from the official Poetry website: Poetry Installation Guide
 
 3\.  **Install the dependencies** using Poetry:
 
     Run the following command to install all necessary dependencies specified in the `pyproject.toml` file:
 
-    bash
-
-    Copy code
-
-    `poetry install`
+    ```
+    
+     poetry install
+    
+    ```
 
     This will create a virtual environment, install all dependencies (including `requests`), and ensure your environment is set up correctly for the project.
 
 4\.  **Run the script**:
 
-    After installation, you can run the script with your desired search query:
+  After installation, you can run the script with your desired search query:
 
-    bash
+    ```
 
-    Copy code
+     poetry run python pubmed_fetcher.py "<your-query>"
 
-    `poetry run python pubmed_fetcher.py "<your-query>"`
+    ```
 
-    Example:
+    Example: 
 
-    bash
+    ```
 
-    Copy code
+     poetry run python pubmed_fetcher.py "cancer treatment"
 
-    `poetry run python pubmed_fetcher.py "cancer treatment"`
-
+    ```
     This command will fetch research papers related to the query `"cancer treatment"` from PubMed, filter the results, and save them in a CSV file.
 
 * * * * *
@@ -140,7 +138,7 @@ Usage
 
     ```
 
-    python pubmed_fetcher.py "cancer treatment"
+     poetry run python pubmed_fetcher.py "cancer treatment"
 
     ```
 

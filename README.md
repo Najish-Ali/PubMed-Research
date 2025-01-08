@@ -1,150 +1,116 @@
-PubMed Research Paper Fetcher
+# PubMed Research Paper Fetcher
 
-=============================
-
-Overview
-
---------
+## Overview
 
 The PubMed Research Paper Fetcher is a Python program that interacts with the PubMed API to retrieve and process research papers based on a given search query. The program is designed to filter papers authored by individuals affiliated with pharmaceutical or biotech companies and save the results in a CSV file for further analysis.
 
-Key Features
+### Key Features
 
-------------
+- Fetch research papers from PubMed using a search query.
+- Identify non-academic authors based on their affiliations.
+- Save filtered results to a CSV file for easy analysis.
+- Modular design for flexibility and reusability.
 
--   Fetch research papers from PubMed using a search query.
+---
 
--   Identify non-academic authors based on their affiliations.
-
--   Save filtered results to a CSV file for easy analysis.
-
--   Modular design for flexibility and reusability.
-
-* * * * *
-
-How It Works
-
-------------
+## How It Works
 
 ### Core Components
 
-#### 1\. **PubMedFetcher Class**
+#### 1. **PubMedFetcher Class**
 
 The `PubMedFetcher` class handles the main functionality of the program:
 
--   **`fetch_papers(query: str)`**: Fetches and processes papers matching the search query.
+- **`fetch_papers(query: str)`**: Fetches and processes papers matching the search query.
+- **`_search_papers(query: str)`**: Retrieves PubMed IDs for papers matching the query.
+- **`_fetch_details(ids: List[str])`**: Fetches detailed metadata for each paper using their PubMed IDs.
+- **`_filter_papers(papers: List[Dict])`**: Filters papers to identify authors affiliated with companies.
+- **`_is_academic_author(affiliation: str)`**: Determines if an author is academic based on keywords in their affiliation.
 
--   **`_search_papers(query: str)`**: Retrieves PubMed IDs for papers matching the query.
-
--   **`_fetch_details(ids: List[str])`**: Fetches detailed metadata for each paper using their PubMed IDs.
-
--   **`_filter_papers(papers: List[Dict])`**: Filters papers to identify authors affiliated with companies.
-
--   **`_is_academic_author(affiliation: str)`**: Determines if an author is academic based on keywords in their affiliation.
-
-#### 2\. **CSV Export**
+#### 2. **CSV Export**
 
 The program saves the filtered results to a CSV file, including fields like:
 
--   PubMed ID
-
--   Title
-
--   Publication Date
-
--   Non-academic Author(s)
-
--   Company Affiliation(s)
+- PubMed ID
+- Title
+- Publication Date
+- Non-academic Author(s)
+- Company Affiliation(s)
 
 ### Filtering Logic
 
 The program identifies non-academic authors by checking affiliations for the absence of keywords like `"university"`, `"institute"`, `"college"`, `"school"`, `"lab"`, and `"hospital"`.
 
-* * * * *
+---
 
-Installation
-
-------------
+## Installation
 
 ### Prerequisites
 
--   Python 3.7 or higher
-
--   `requests` library for making API calls
+- Python 3.7 or higher
+- `requests` library for making API calls
 
 ### Steps
 
-1\.  **Clone the repository**:
+1. **Clone the repository**:
 
-    bash
-
-    Copy code
-
-    `git clone <repository-url>
-
-    cd <repository-folder>`
-
-2\.  **Install Poetry** (if not already installed):
-
-    -   If Poetry is not installed, you can install it using the following command:
-
-    ```
-    
-      curl -sSL https://install.python-poetry.org | python3 -
-      
-    ```
-    -   Alternatively, follow the installation instructions for your operating system from the official Poetry website: Poetry Installation Guide
-
-3\.  **Install the dependencies** using Poetry:
-
-    Run the following command to install all necessary dependencies specified in the `pyproject.toml` file:
-
-    ```
-    
-     poetry install
-    
+    ```bash
+    git clone <repository-url>
+    cd <repository-folder>
     ```
 
-    This will create a virtual environment, install all dependencies (including `requests`), and ensure your environment is set up correctly for the project.
+2. **Install Poetry** (if not already installed):
 
-4\.  **Run the script**:
+    - If Poetry is not installed, you can install it using the following command:
 
-  After installation, you can run the script with your desired search query:
-
-    ```
-
-     poetry run python pubmed_fetcher.py "<your-query>"
-
+    ```bash
+    curl -sSL https://install.python-poetry.org | python3 -
     ```
 
-    Example: 
+    - Alternatively, follow the installation instructions for your operating system from the official Poetry website: [Poetry Installation Guide](https://python-poetry.org/docs/#installation)
 
-    ```
+3. **Install the dependencies** using Poetry:
 
-     poetry run python pubmed_fetcher.py "cancer treatment"
+    Run the following command to install all necessary dependencies specified in the `pyproject.toml` file:
 
+    ```bash
+    poetry install
     ```
-    This command will fetch research papers related to the query `"cancer treatment"` from PubMed, filter the results, and save them in a CSV file.
 
-* * * * *
+    This will create a virtual environment, install all dependencies (including `requests`), and ensure your environment is set up correctly for the project.
 
-Usage
+4. **Run the script**:
 
------
+    After installation, you can run the script with your desired search query:
+
+    ```bash
+    poetry run python pubmed_fetcher.py "<your-query>"
+    ```
+
+    Example:
+
+    ```bash
+    poetry run python pubmed_fetcher.py "cancer treatment"
+    ```
+
+    This command will fetch research papers related to the query `"cancer treatment"` from PubMed, filter the results, and save them in a CSV file.
+
+---
+
+## Usage
 
 ### Example
 
-1\.  Run the program with a query, e.g., `"cancer treatment"`:
+1. Run the program with a query, e.g., `"cancer treatment"`:
 
-    ```
+    ```bash
+    poetry run python pubmed_fetcher.py "cancer treatment"
+    ```
 
-     poetry run python pubmed_fetcher.py "cancer treatment"
+2. The program fetches, filters, and saves the results to `output.csv`.
 
-    ```
+3. Open the `output.csv` file to view the results.
 
-2\.  The program fetches, filters, and saves the results to `output.csv`.
-
-3\.  Open the `output.csv` file to view the results.
 
 ### Command-Line Arguments
 

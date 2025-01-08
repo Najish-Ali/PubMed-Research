@@ -65,14 +65,7 @@ Installation
 
     ```
 
-2.  Install dependencies:
-
-    ```
-    pip install -r requirements.txt
-
-    ```
-
-3.  Run the script:
+2.  Run the script:
 
     ```
     python pubmed_fetcher.py "<your-query>"

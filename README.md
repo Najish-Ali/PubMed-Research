@@ -209,18 +209,3 @@ Acknowledgments
 This project uses the NCBI PubMed API and Python libraries for implementation. Special thanks to the open-source community for providing resources and guidance.
 
 * * * * *
-
-Contact
-
--------
-
-For questions or support, reach out to:
-
--   **Name**: Sayeed Najish Ali
-
--   **Email**: sayyednazish52@gmail.com
-
--   **GitHub**: N176
-
-* * * * *
-
